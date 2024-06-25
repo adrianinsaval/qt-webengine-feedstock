@@ -36,6 +36,8 @@ source:
       # https://github.com/ninja-build/ninja/issues/2417#issuecomment-2059047539
       # https://bugs.gentoo.org/930107
       - patches/add_missing_dependency_on_spellcheck.diff
+      # https://github.com/google/perfetto/commit/b82a213bcf71dd8e68b53941375936c7905c0ff2
+      - patches/fix-perfetto-compilation.patch
 
   - url: https://download.qt.io/development_releases/gnuwin32/gnuwin32.zip  # [win]
     folder: gnuwin32  # [win]
