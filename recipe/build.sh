@@ -9,12 +9,9 @@ USED_BUILD_PREFIX=${BUILD_PREFIX:-${PREFIX}}
 echo USED_BUILD_PREFIX=${BUILD_PREFIX}
 
 # qtwebengine needs python 2
-if [[ $(uname) == "Darwin" ]]; then
-    if [[ $(arch) == "arm64" ]]; then
-      brew install pyenv
-      pyenv install 2.7.18
+if [[ $(uname) == "Darwin" && $(arch) == "arm64" ]]; then
       export PATH="$(pyenv root)/shims:${PATH}"
-    fi
+      export USE_PYENV=1
 else
     mamba create --yes --prefix "${SRC_DIR}/python2_hack" --channel conda-forge --no-deps python=2
     export PATH=${SRC_DIR}/python2_hack/bin:${PATH}
