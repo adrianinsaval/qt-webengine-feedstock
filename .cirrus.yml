@@ -53,6 +53,7 @@ win_64_task:
 
     # Instructions:
     build_script: |
+      curl -L -o Miniforge3-Windows-x86_64.exe https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Windows-x86_64.exe
       start /wait "" Miniforge3-Windows-x86_64.exe /InstallationType=JustMe /RegisterPython=0 /S /D=%UserProfile%\Miniforge3
       set "PATH=%PATH%;%UserProfile%\Miniforge3\Scripts\"
       set "CI=cirrus"
