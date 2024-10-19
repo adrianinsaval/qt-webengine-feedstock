@@ -20,11 +20,9 @@ if [[ $(uname) == "Linux" ]]; then
     ln -s ${GXX} g++ || true
     ln -s ${GCC} gcc || true
     ln -s ${USED_BUILD_PREFIX}/bin/${HOST}-gcc-ar gcc-ar || true
-    mkdir -p src/3rdparty/gn/out/Release
-    ln -s ${USED_BUILD_PREFIX}/aarch64-conda-linux-gnu/lib/libgcc_s.so.1 src/3rdparty/gn/out/Release/libgcc_s.so.1 || true
-
-    # ${USED_BUILD_PREFIX}/x86_64-conda-linux-gnu/lib/libgcc_s.so.1
-    # ${USED_BUILD_PREFIX}/lib/libgcc_s.so.1
+    # if [[ $(arch) == "aarch64" ]]; then
+    #     ln -s ${USED_BUILD_PREFIX}/${HOST}-conda-linux-gnu/lib/libgcc_s.so.1 libgcc_s.so.1 || true
+    # fi
 
     export LD=${GXX}
     export CC=${GCC}
