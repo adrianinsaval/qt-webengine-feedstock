@@ -86,6 +86,7 @@ requirements:
     - perl 5
     - jom                                # [win]
     - nodejs >=16
+    - six
   host:
     - libjpeg-turbo
     - pulseaudio-client                  # [linux]

@@ -8,14 +8,6 @@ pushd qtwebengine-build
 USED_BUILD_PREFIX=${BUILD_PREFIX:-${PREFIX}}
 echo USED_BUILD_PREFIX=${BUILD_PREFIX}
 
-# qtwebengine needs python 2
-if [[ $(uname) == "Darwin" && $(arch) == "arm64" ]]; then
-    export PATH="$(pyenv root)/shims:${PATH}"
-else
-    mamba create --yes --prefix "${SRC_DIR}/python2_hack" --channel conda-forge --no-deps python=2
-    export PATH=${SRC_DIR}/python2_hack/bin:${PATH}
-fi
-
 if [[ $(uname) == "Linux" ]]; then
     ln -s ${GXX} g++ || true
     ln -s ${GCC} gcc || true
@@ -38,11 +30,11 @@ if [[ $(uname) == "Linux" ]]; then
     # Set QMake prefix to $PREFIX
     qmake -set prefix $PREFIX
 
-    qmake QMAKE_LIBDIR=${PREFIX}/lib \
+    qmake .. QMAKE_LIBDIR=${PREFIX}/lib \
         QMAKE_LFLAGS+="-Wl,-rpath,$PREFIX/lib -Wl,-rpath-link,$PREFIX/lib -L$PREFIX/lib" \
         INCLUDEPATH+="${PREFIX}/include" \
         PKG_CONFIG_EXECUTABLE=$(which pkg-config) \
-        ..
+        -- -webengine-python-version python3
 
     # Cleanup before final version
     # https://github.com/conda-forge/qt-webengine-feedstock/pull/15#issuecomment-1336593298
@@ -110,7 +102,7 @@ if [[ $(uname) == "Darwin" ]]; then
 
     # sed -i '' -e 's/-Werror//' $PREFIX/mkspecs/features/qt_module_headers.prf
 
-    qmake QMAKE_LIBDIR=${PREFIX}/lib \
+    qmake .. QMAKE_LIBDIR=${PREFIX}/lib \
         INCLUDEPATH+="${PREFIX}/include" \
         CONFIG+="warn_off" \
         QMAKE_CFLAGS_WARN_ON="-w" \
@@ -120,7 +112,7 @@ if [[ $(uname) == "Darwin" ]]; then
         $EXTRA_FLAGS \
         QMAKE_LFLAGS+="-Wno-everything -Wl,-rpath,$PREFIX/lib -L$PREFIX/lib" \
         PKG_CONFIG_EXECUTABLE=$(which pkg-config) \
-        ..
+        -- -webengine-python-version python3
 
     # find . -type f -exec sed -i '' -e 's/-Wl,-fatal_warnings//g' {} +
     # sed -i '' -e 's/-Werror//' $PREFIX/mkspecs/features/qt_module_headers.prf
