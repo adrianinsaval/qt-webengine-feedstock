@@ -1,7 +1,7 @@
 diff --git a/src/3rdparty/chromium/third_party/breakpad/breakpad/src/client/linux/dump_writer_common/thread_info.h b/src/3rdparty/chromium/third_party/breakpad/breakpad/src/client/linux/dump_writer_common/thread_info.h
 index fb216fa6d71..4f957e54c39 100644
---- a/src/3rdparty/chromium/third_party/breakpad/breakpad/src/client/linux/dump_writer_common/thread_info.h
-+++ b/src/3rdparty/chromium/third_party/breakpad/breakpad/src/client/linux/dump_writer_common/thread_info.h
+--- a/chromium/third_party/breakpad/breakpad/src/client/linux/dump_writer_common/thread_info.h
++++ b/chromium/third_party/breakpad/breakpad/src/client/linux/dump_writer_common/thread_info.h
 @@ -66,8 +66,8 @@ struct ThreadInfo {
    struct user_fpregs fpregs;
  #elif defined(__aarch64__)
@@ -15,8 +15,8 @@ index fb216fa6d71..4f957e54c39 100644
    mcontext_t mcontext;
 diff --git a/src/3rdparty/chromium/third_party/breakpad/breakpad/src/tools/linux/md2core/minidump-2-core.cc b/src/3rdparty/chromium/third_party/breakpad/breakpad/src/tools/linux/md2core/minidump-2-core.cc
 index aade82c996d..fa7df048e5d 100644
---- a/src/3rdparty/chromium/third_party/breakpad/breakpad/src/tools/linux/md2core/minidump-2-core.cc
-+++ b/src/3rdparty/chromium/third_party/breakpad/breakpad/src/tools/linux/md2core/minidump-2-core.cc
+--- a/chromium/third_party/breakpad/breakpad/src/tools/linux/md2core/minidump-2-core.cc
++++ b/chromium/third_party/breakpad/breakpad/src/tools/linux/md2core/minidump-2-core.cc
 @@ -320,7 +320,7 @@ struct CrashedProcess {
      user_fpxregs_struct fpxregs;
  #endif
