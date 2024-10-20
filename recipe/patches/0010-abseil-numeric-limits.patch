@@ -14,8 +14,8 @@ Change-Id: I1251b01b09e6a9baac52ae4df443714432115e90
 
 diff --git a/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/internal/stacktrace_riscv-inl.inc b/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/internal/stacktrace_riscv-inl.inc
 index a9e2c323e7..20183fa321 100644
---- a/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/internal/stacktrace_riscv-inl.inc
-+++ b/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/internal/stacktrace_riscv-inl.inc
+--- a/chromium/third_party/abseil-cpp/absl/debugging/internal/stacktrace_riscv-inl.inc
++++ b/chromium/third_party/abseil-cpp/absl/debugging/internal/stacktrace_riscv-inl.inc
 @@ -30,6 +30,8 @@
  #include <cassert>
  #include <cstdint>
@@ -27,8 +27,8 @@ index a9e2c323e7..20183fa321 100644
  #include "absl/debugging/stacktrace.h"
 diff --git a/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/internal/stacktrace_x86-inl.inc b/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/internal/stacktrace_x86-inl.inc
 index 1354cb3769..9fbfcf767a 100644
---- a/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/internal/stacktrace_x86-inl.inc
-+++ b/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/internal/stacktrace_x86-inl.inc
+--- a/chromium/third_party/abseil-cpp/absl/debugging/internal/stacktrace_x86-inl.inc
++++ b/chromium/third_party/abseil-cpp/absl/debugging/internal/stacktrace_x86-inl.inc
 @@ -35,8 +35,6 @@
  #include "absl/debugging/internal/vdso_support.h"  // a no-op on non-elf or non-glibc systems
  #include "absl/debugging/stacktrace.h"

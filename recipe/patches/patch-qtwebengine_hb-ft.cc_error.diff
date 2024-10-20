@@ -1,5 +1,5 @@
---- src/3rdparty/chromium/third_party/harfbuzz-ng/src/src/hb-ft.cc	2024-09-27 18:46:30
-+++ src/3rdparty/chromium/third_party/harfbuzz-ng/src/src/hb-ft.cc 2024-09-27 18:46:18
+--- chromium/third_party/harfbuzz-ng/src/src/hb-ft.cc	2024-09-27 18:46:30
++++ chromium/third_party/harfbuzz-ng/src/src/hb-ft.cc 2024-09-27 18:46:18
 @@ -729,8 +729,9 @@
  }
  

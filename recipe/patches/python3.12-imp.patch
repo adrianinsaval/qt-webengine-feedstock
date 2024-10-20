@@ -4,8 +4,8 @@ Origin: upstream, commits
  https://chromium.googlesource.com/chromium/src/+/f5f6e361d037c316
 Last-Update: 2024-03-17
 
---- a/src/3rdparty/chromium/mojo/public/tools/mojom/mojom/fileutil.py
-+++ b/src/3rdparty/chromium/mojo/public/tools/mojom/mojom/fileutil.py
+--- a/chromium/mojo/public/tools/mojom/mojom/fileutil.py
++++ b/chromium/mojo/public/tools/mojom/mojom/fileutil.py
 @@ -3,7 +3,6 @@
  # found in the LICENSE file.
  
@@ -14,8 +14,8 @@ Last-Update: 2024-03-17
  import os.path
  import sys
  
---- a/src/3rdparty/chromium/mojo/public/tools/mojom/mojom/parse/lexer.py
-+++ b/src/3rdparty/chromium//mojo/public/tools/mojom/mojom/parse/lexer.py
+--- a/chromium/mojo/public/tools/mojom/mojom/parse/lexer.py
++++ b/chromium//mojo/public/tools/mojom/mojom/parse/lexer.py
 @@ -2,7 +2,6 @@
  # Use of this source code is governed by a BSD-style license that can be
  # found in the LICENSE file.

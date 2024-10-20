@@ -10,8 +10,8 @@ Subject: [PATCH] Compile GN to support both x86_64 and arm64 archs when
 
 diff --git a/src/3rdparty/gn/build/gen.py b/src/3rdparty/gn/build/gen.py
 index 2a37cb4e1ac..a23fac8befe 100755
---- a/src/3rdparty/gn/build/gen.py
-+++ b/src/3rdparty/gn/build/gen.py
+--- a/gn/build/gen.py
++++ b/gn/build/gen.py
 @@ -331,6 +331,9 @@ def WriteGNNinja(path, platform, host, options):
        ldflags.extend(['-fdata-sections', '-ffunction-sections'])
        if platform.is_darwin():

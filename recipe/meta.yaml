@@ -1,5 +1,7 @@
 {% set name = "qt-webengine" %}
-{% set version = "5.15.15" %}
+# latest webengine is released on git even if qt base is not open source yet
+{% set version = "5.15.17" %}
+{% set qt_main_version = "5.15.15" %}
 {% set version_major_minor = '.'.join(version.split('.')[:2]) %}
 
 package:
@@ -7,8 +9,12 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://download.qt.io/official_releases/qt/{{ version_major_minor }}/{{ version }}/submodules/qtwebengine-everywhere-opensource-src-{{ version }}.tar.xz
-    sha256: 25da17b8f5087d57482ee727717784edd30942418c5b75fb539103089075e91f
+  - url: https://github.com/qt/qtwebengine/archive/v{{ version }}-lts.tar.gz
+    sha256: 4910b864d81d005ea57d96f7841270139ba33ab221128d29acb314416798a261
+
+  - url:  https://github.com/qt/qtwebengine-chromium/archive/85337c28bae7d7d2c79282c4f4c92435cd7649b8.tar.gz # latest commit as of 2024-10-20 in branch 87-based
+    sha256: 13451d9894ba3cb9e5d15b87eededfc0ced19f297e39086d90c7abfe035eab9b
+    folder: src/3rdparty
     patches:
       - patches/0001-aarch64-sys-state-structs.patch                             # [aarch64]
       - patches/0002-macos-fatal-warnings.patch                                  # [osx]
@@ -36,9 +42,6 @@ source:
       # https://github.com/ninja-build/ninja/issues/2417#issuecomment-2059047539
       # https://bugs.gentoo.org/930107
       - patches/add_missing_dependency_on_spellcheck.diff
-      # https://github.com/google/perfetto/commit/b82a213bcf71dd8e68b53941375936c7905c0ff2
-      - patches/fix-perfetto-compilation.patch
-      - patches/ffmpeg-mathops.patch
       - patches/python3.12-imp.patch
       # macports patches https://github.com/macports/macports-ports/commit/a9ba31ffe6bdd86b9c13737aa583e7c003f1fb58#diff-bc9f30dc8c9f361f400189b91801321d634f45c504735b63dd156a06e245449fR1790
       - patches/patch-qtwebengine_hb-ft.cc_error.diff
@@ -103,7 +106,7 @@ requirements:
     - libsqlite
     - zlib
     - libxcb                             # [linux]
-    - qt-main  {{ version }}
+    - qt-main  {{ qt_main_version }}
     - libwebp
     - libcups                            # [linux]
     # Found as part of 2023/04 exploration on overlinked dependencies
