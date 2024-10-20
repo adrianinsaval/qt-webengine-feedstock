@@ -52,6 +52,10 @@ nss:
 - '3'
 pulseaudio_client:
 - '17.0'
+qt:
+- '5.15'
+qt_main:
+- '5.15'
 target_platform:
 - linux-64
 zip_keys:
