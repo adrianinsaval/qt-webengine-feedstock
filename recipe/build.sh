@@ -11,7 +11,7 @@ echo USED_BUILD_PREFIX=${BUILD_PREFIX}
 if [[ $(uname) == "Linux" ]]; then
     ln -s ${GXX} g++ || true
     ln -s ${GCC} gcc || true
-    ln -s ${USED_BUILD_PREFIX}/bin/${GCC}-ar gcc-ar || true
+    ln -s ${GCC}-ar gcc-ar || true
 
     export LD=${GXX}
     export CC=${GCC}
