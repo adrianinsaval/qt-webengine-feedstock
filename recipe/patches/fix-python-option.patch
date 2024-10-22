@@ -1,0 +1,79 @@
+From 17fd3176988586168bee8654008a097a5f23ec1d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michael=20Br=C3=BCning?= <michael.bruning@qt.io>
+Date: Wed, 3 Apr 2024 11:31:09 +0200
+Subject: [PATCH] Fixup "Add option to chose python version for building 5.15
+ WebEngine"
+
+It caused conflicts in top-level windows builds due to duplicate names
+for python tests.
+
+Pick-to: 5.15
+Change-Id: I869d7a87a8c562f9bf601fa9545d9a40df2a4166
+Reviewed-by: Allan Sandfeld Jensen <allan.jensen@qt.io>
+---
+ configure.pri                  | 2 +-
+ mkspecs/features/functions.prf | 6 +++---
+ src/buildtools/configure.json  | 8 ++++----
+ 3 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/configure.pri b/configure.pri
+index 99cdbf72bf9..cb53c93b0aa 100644
+--- a/configure.pri
++++ b/configure.pri
+@@ -49,7 +49,7 @@ defineTest(qtConfReport_jumboBuild) {
+     qtConfReportPadded($${1}, $$mergeLimit)
+ }
+ 
+-defineTest(qtConfTest_detectPython) {
++defineTest(qtConfTest_detectPython2) {
+     pythonOverride = $$eval(config.input.python_override)
+     !isEmpty(pythonOverride) {
+         python = $$qtConfFindInPath("$$pythonOverride$$EXE_SUFFIX")
+diff --git a/mkspecs/features/functions.prf b/mkspecs/features/functions.prf
+index 65500776bfe..7f630588a10 100644
+--- a/mkspecs/features/functions.prf
++++ b/mkspecs/features/functions.prf
+@@ -44,11 +44,11 @@ defineReplace(which) {
+ 
+ # Returns the unquoted path to the python executable.
+ defineReplace(pythonPath) {
+-    isEmpty(QMAKE_PYTHON) {
++    isEmpty(QMAKE_PYTHON2) {
+         # Fallback for building QtWebEngine with Qt < 5.8
+-        QMAKE_PYTHON = python
++        QMAKE_PYTHON2 = python
+     }
+-    return($$QMAKE_PYTHON)
++    return($$QMAKE_PYTHON2)
+ }
+ 
+ # Returns the python executable for use with shell / make targets.
+diff --git a/src/buildtools/configure.json b/src/buildtools/configure.json
+index 17fc6510658..5e5d9d725e9 100644
+--- a/src/buildtools/configure.json
++++ b/src/buildtools/configure.json
+@@ -318,8 +318,8 @@
+             "type": "detectNinja"
+         },
+         "webengine-python": {
+-            "label": "python",
+-            "type": "detectPython",
++            "label": "python2",
++            "type": "detectPython2",
+             "log": "location"
+         },
+         "webengine-winversion": {
+@@ -446,11 +446,11 @@
+             "output": [ "privateFeature" ]
+         },
+         "webengine-python": {
+-            "label": "python",
++            "label": "python2",
+             "condition": "tests.webengine-python",
+             "output": [
+                 "privateFeature",
+-                { "type": "varAssign", "name": "QMAKE_PYTHON", "value": "tests.webengine-python.location" }
++                { "type": "varAssign", "name": "QMAKE_PYTHON2", "value": "tests.webengine-python.location" }
+             ]
+         },
+         "webengine-gperf": {

@@ -11,10 +11,7 @@ echo USED_BUILD_PREFIX=${BUILD_PREFIX}
 if [[ $(uname) == "Linux" ]]; then
     ln -s ${GXX} g++ || true
     ln -s ${GCC} gcc || true
-    ln -s ${USED_BUILD_PREFIX}/bin/${HOST}-gcc-ar gcc-ar || true
-    # if [[ $(arch) == "aarch64" ]]; then
-    #     ln -s ${USED_BUILD_PREFIX}/${HOST}-conda-linux-gnu/lib/libgcc_s.so.1 libgcc_s.so.1 || true
-    # fi
+    ln -s ${USED_BUILD_PREFIX}/bin/${GCC}-ar gcc-ar || true
 
     export LD=${GXX}
     export CC=${GCC}
