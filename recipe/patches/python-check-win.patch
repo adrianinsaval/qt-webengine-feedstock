@@ -1,0 +1,20 @@
+diff --git a/configure.pri b/configure.pri
+--- configure.pri
++++ configure.pri
+@@ -59,16 +59,10 @@
+         }
+     }
+ 
+     win32 {
+-        # the default name of the python 2 executable on windows is just
+-        # python, so try that first
+-        isEmpty(python):python = $$qtConfFindInPath("python$$EXE_SUFFIX")
+         isEmpty(python):python = $$qtConfFindInPath("python2$$EXE_SUFFIX")
+         isEmpty(python):python = $$qtConfFindInPath("python3$$EXE_SUFFIX")
+-    } else {
+-        isEmpty(python):python = $$qtConfFindInPath("python2$$EXE_SUFFIX")
+-        isEmpty(python):python = $$qtConfFindInPath("python3$$EXE_SUFFIX")
+         isEmpty(python):python = $$qtConfFindInPath("python$$EXE_SUFFIX")
+     }
+ 
+     isEmpty(python) {

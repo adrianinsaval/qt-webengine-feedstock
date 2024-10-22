@@ -11,6 +11,8 @@ package:
 source:
   - url: https://github.com/qt/qtwebengine/archive/v{{ version }}-lts.tar.gz
     sha256: 4910b864d81d005ea57d96f7841270139ba33ab221128d29acb314416798a261
+    patches:
+      - patches/python-check-win.patch #[win]
 
   - url:  https://github.com/qt/qtwebengine-chromium/archive/85337c28bae7d7d2c79282c4f4c92435cd7649b8.tar.gz # latest commit as of 2024-10-20 in branch 87-based
     sha256: 13451d9894ba3cb9e5d15b87eededfc0ced19f297e39086d90c7abfe035eab9b
