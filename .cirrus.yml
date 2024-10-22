@@ -89,9 +89,6 @@ osx_arm64_task:
 
     # Instructions:
     osx_build_script: |
-      brew install pyenv
-      pyenv install -s 2.7.18
-      pyenv global 2.7.18
       export CI=cirrus
       export flow_run_id="cirrus_${CIRRUS_TASK_ID}"
       export remote_url=${CIRRUS_REPO_CLONE_URL}
