@@ -35,6 +35,42 @@ linux_aarch64_task:
       fi
       ./.scripts/run_docker_build.sh
 
+linux_aarch64_cross_task:
+    # Basic metadata:
+    name: build_cross_linux_aarch64_
+    timeout_in: 120m
+
+    # The build machine:
+    compute_engine_instance:
+      image_project: cirrus-images
+      image: family/docker-builder
+      platform: linux
+      cpu: 8
+      memory: 32G
+      #disk: 100 # optional. By default, uses the smallest disk size required by the image.
+      nested_virtualization: true
+
+    # Environment variables:
+    env:
+      CONFIG: linux_aarch64_
+      UPLOAD_PACKAGES: True
+      DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+
+    # Instructions:
+    docker_build_script: |
+      export CI=cirrus
+      export flow_run_id="cirrus_${CIRRUS_TASK_ID}"
+      export remote_url=${CIRRUS_REPO_CLONE_URL}
+      export sha=${CIRRUS_CHANGE_IN_REPO}
+      export GIT_BRANCH=${CIRRUS_BASE_BRANCH}
+      export FEEDSTOCK_NAME=$(basename ${CIRRUS_REPO_NAME})
+      if [ -z "$CIRRUS_PR" ]; then
+        export IS_PR_BUILD="False"
+      else
+        export IS_PR_BUILD="True"
+      fi
+      ./.scripts/run_docker_build.sh
+
 linux_64_task:
     # Basic metadata:
     name: build_linux_64_
@@ -70,36 +106,3 @@ linux_64_task:
         export IS_PR_BUILD="True"
       fi
       ./.scripts/run_docker_build.sh
-
-osx_arm64_task:
-    # Basic metadata:
-    name: build_osx_arm64_
-    timeout_in: 120m
-
-    # The build machine:
-    macos_instance:
-      image: ghcr.io/cirruslabs/macos-monterey-xcode:13
-      cpu: 8
-      memory: 32G
-
-    # Environment variables:
-    env:
-      CONFIG: osx_arm64_
-      UPLOAD_PACKAGES: True
-
-    # Instructions:
-    osx_build_script: |
-      export CI=cirrus
-      export flow_run_id="cirrus_${CIRRUS_TASK_ID}"
-      export remote_url=${CIRRUS_REPO_CLONE_URL}
-      export sha=${CIRRUS_CHANGE_IN_REPO}
-      export OSX_FORCE_SDK_DOWNLOAD="1"
-      export GIT_BRANCH=${CIRRUS_BASE_BRANCH}
-      export FEEDSTOCK_NAME=$(basename ${CIRRUS_REPO_NAME})
-      export OSX_SDK_DIR=${HOME}/SDKs
-      if [ -z "$CIRRUS_PR" ]; then
-        export IS_PR_BUILD="False"
-      else
-        export IS_PR_BUILD="True"
-      fi
-      ./.scripts/run_osx_build.sh

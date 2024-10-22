@@ -79,7 +79,7 @@ requirements:
     - {{ cdt('libglvnd-glx') }}          # [linux]
     - {{ cdt('libglvnd-egl') }}          # [linux]
     - cross-python_{{ target_platform }} # [build_platform != target_platform]
-    - python
+    - html5lib
     - pkg-config                         # [unix]
     - make                               # [unix]
     - cmake
