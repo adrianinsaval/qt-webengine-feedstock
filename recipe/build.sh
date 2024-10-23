@@ -8,6 +8,8 @@ pushd qtwebengine-build
 USED_BUILD_PREFIX=${BUILD_PREFIX:-${PREFIX}}
 echo USED_BUILD_PREFIX=${BUILD_PREFIX}
 
+pip install pipes
+
 if [[ $(uname) == "Linux" ]]; then
     ln -s ${GXX} g++ || true
     ln -s ${GCC} gcc || true

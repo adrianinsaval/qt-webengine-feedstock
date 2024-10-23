@@ -2,6 +2,8 @@ setlocal enableextensions enabledelayedexpansion
 
 git config --system core.longpaths true
 
+pip install pipes
+
 set LIBRARY_PATHS=-I %LIBRARY_INC%
 
 pushd %LIBRARY_INC%
