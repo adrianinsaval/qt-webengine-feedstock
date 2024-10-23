@@ -15,6 +15,7 @@ if [[ $(uname) == "Linux" ]]; then
     if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" = "1" ]]; then
         export ALT_GCC=${CONDA_TOOLCHAIN_BUILD}-gcc
         export ALT_GXX=${CONDA_TOOLCHAIN_BUILD}-g++
+        export ALT_LD=${CONDA_TOOLCHAIN_BUILD}-g++
         export ALT_AR=${CONDA_TOOLCHAIN_BUILD}-gcc-ar
     fi
 
