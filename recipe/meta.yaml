@@ -121,6 +121,15 @@ requirements:
     - xorg-libxdamage                    # [linux]
     - xorg-inputproto                    # [linux]
     - xorg-libxfixes                     # [linux]
+    - xcb-util                           # [linux]
+    - xcb-util-wm                        # [linux]
+    - xcb-util-keysyms                   # [linux]
+    - xcb-util-image                     # [linux]
+    - xcb-util-renderutil                # [linux]
+    - xorg-libsm                         # [linux]
+    - xorg-libice                        # [linux]
+    - xorg-libxxf86vm                    # [linux]
+    - xorg-xf86vidmodeproto              # [linux]
   run:
     - libwebp
     # These do not have run_exports
@@ -130,6 +139,16 @@ requirements:
     - xorg-libxrandr                     # [linux]
     - xorg-libxtst                       # [linux]
     - xorg-libxfixes                     # [linux]
+    - libxcb                             # [linux]
+    - xcb-util-wm                        # [linux]
+    - xcb-util-keysyms                   # [linux]
+    - xcb-util-image                     # [linux]
+    - xcb-util-renderutil                # [linux]
+    - xorg-libx11                        # [linux]
+    - xorg-libxext                       # [linux]
+    - xorg-libsm                         # [linux]
+    - xorg-libice                        # [linux]
+    - xorg-xf86vidmodeproto              # [linux]
   run_constrained:
     - qt 5.15.3|5.15.4|5.15.6|5.15.8|5.15.15|5.15.16
     # - qt {{ version }}
