@@ -9,7 +9,7 @@ azure:
       CONDA_BLD_PATH: C:\bld\
       MINIFORGE_HOME: C:\Miniforge
 build_platform:
-  osx_arm64: osx_64
+  linux_aarch64: linux_aarch64
 conda_build:
   pkg_format: '2'
 conda_forge_output_validation: true
@@ -19,5 +19,6 @@ github:
 os_version:
   linux_64: cos7
 provider:
-  linux_aarch64: azure
+  linux_aarch64: github_actions
+  linux: github_actions
 test: native_and_emulated
