@@ -3,9 +3,9 @@ c_compiler:
 c_stdlib:
 - vs
 channel_sources:
-- conda-forge
+- freecad,conda-forge
 channel_targets:
-- conda-forge main
+- freecad main
 cxx_compiler:
 - vs2022
 libiconv:
@@ -18,6 +18,8 @@ libsqlite:
 - '3'
 libwebp:
 - '1'
+qt:
+- '5.15'
 target_platform:
 - win-64
 zlib:
