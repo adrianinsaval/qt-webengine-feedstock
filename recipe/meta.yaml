@@ -36,8 +36,6 @@ source:
       # https://github.com/ninja-build/ninja/issues/2417#issuecomment-2059047539
       # https://bugs.gentoo.org/930107
       - patches/add_missing_dependency_on_spellcheck.diff
-      # https://github.com/google/perfetto/commit/b82a213bcf71dd8e68b53941375936c7905c0ff2
-      - patches/fix-perfetto-compilation.patch
       - patches/ffmpeg-mathops.patch
       - patches/python3.12-imp.patch
       # macports patches https://github.com/macports/macports-ports/commit/a9ba31ffe6bdd86b9c13737aa583e7c003f1fb58#diff-bc9f30dc8c9f361f400189b91801321d634f45c504735b63dd156a06e245449fR1790
